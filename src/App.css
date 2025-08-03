@@ -1,0 +1,136 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+	background: #0f0f0f;
+	color: #fff;
+	line-height: 1.6;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.app {
+	min-height: 100vh;
+	background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+}
+
+.app-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 1rem;
+
+	@media (max-width: 768px) {
+		padding: 0 0.5rem;
+	}
+}
+
+.search-section {
+	padding: 2rem 0;
+	text-align: center;
+	border-bottom: 1px solid #333;
+	margin-bottom: 2rem;
+
+	@media (max-width: 768px) {
+		padding: 1.5rem 0;
+		margin-bottom: 1.5rem;
+	}
+}
+
+.app-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-bottom: 2rem;
+	background: linear-gradient(135deg, #fff 0%, #e50914 100%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+	@media (max-width: 768px) {
+		font-size: 2rem;
+		margin-bottom: 1.5rem;
+	}
+
+	@media (max-width: 480px) {
+		font-size: 1.8rem;
+	}
+}
+
+.content-section {
+	padding-bottom: 2rem;
+
+	@media (max-width: 768px) {
+		padding-bottom: 1rem;
+	}
+}
+
+.movies-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+	gap: 1.5rem;
+	margin-top: 1rem;
+
+	@media (max-width: 768px) {
+		grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+		gap: 1rem;
+	}
+
+	@media (max-width: 480px) {
+		grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+		gap: 0.8rem;
+	}
+}
+
+.loading {
+	text-align: center;
+	padding: 4rem 0;
+	color: #888;
+}
+
+.spinner {
+	width: 40px;
+	height: 40px;
+	border: 3px solid #333;
+	border-top: 3px solid #e50914;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+	margin: 0 auto 1rem auto;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.loading p {
+	font-size: 1.1rem;
+	margin: 0;
+}
+
+.no-results-simple {
+	text-align: center;
+	padding: 4rem 1rem;
+	color: #888;
+}
+
+.no-results-simple h3 {
+	font-size: 1.4rem;
+	color: #e50914;
+	margin-bottom: 0.5rem;
+	font-weight: 500;
+}
+
+.no-results-simple p {
+	font-size: 1rem;
+	color: #aaa;
+	margin: 0;
+}
