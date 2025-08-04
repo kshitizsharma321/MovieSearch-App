@@ -25,7 +25,6 @@ export default function ImageLoader({ path, image = 'movie', ...props }) {
 
 			<img
 				{...props}
-				loading='lazy'
 				className={`image-low-quality ${lowQualityLoaded ? 'loaded' : ''}`}
 				src={loadImage(path, image)}
 				onLoad={() => setLowQualityLoaded(true)}
@@ -35,6 +34,7 @@ export default function ImageLoader({ path, image = 'movie', ...props }) {
 			{lowQualityLoaded && (
 				<img
 					{...props}
+					loading='lazy'
 					className={`image-high-quality ${highQualityLoaded ? 'loaded' : ''}`}
 					src={loadImage(path, image, 'original')}
 					onLoad={() => setHighQualityLoaded(true)}
