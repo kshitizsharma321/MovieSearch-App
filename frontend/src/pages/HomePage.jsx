@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import { getTrendingData } from '../services/userService.js';
 import SearchBar from '../components/SearchBar.jsx';
 import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import NoMovieFound from '../components/NoMovieFound.jsx';
@@ -12,8 +13,7 @@ export default function Home() {
 
 	useEffect(() => {
 		async function fetchData() {
-			const response = await fetch(`${URL}/api`);
-			const jsonData = await response.json();
+			const jsonData = await getTrendingData();
 			setTrendingData(jsonData);
 		}
 		fetchData();

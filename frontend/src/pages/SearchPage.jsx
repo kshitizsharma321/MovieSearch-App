@@ -1,6 +1,7 @@
 import { useSearchParams } from 'react-router';
 import { useState, useEffect } from 'react';
 
+import { getSearchData } from '../services/userService.js';
 import SearchBar from '../components/SearchBar.jsx';
 import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import NoMovieFound from '../components/NoMovieFound.jsx';
@@ -16,8 +17,7 @@ export default function SearchPage() {
 	useEffect(() => {
 		setSearchData(null);
 		async function fetchData() {
-			const response = await fetch(`${URL}/api/search?q=${name}`);
-			const jsonData = await response.json();
+			const jsonData = getSearchData(name);
 			setSearchData(jsonData);
 		}
 		fetchData();
