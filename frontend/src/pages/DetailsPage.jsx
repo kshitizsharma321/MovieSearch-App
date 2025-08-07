@@ -3,10 +3,8 @@ import { useState, useEffect } from 'react';
 
 import { getMovieData } from '../services/userService.js';
 import LoadingSpinner from '../components/LoadingSpinner.jsx';
-import NoMovieFound from '../components/NoMovieFound.jsx';
+import NoPageFound from '../pages/NoPageFound.jsx';
 import MovieDetails from '../components/MovieDetails.jsx';
-
-const URL = import.meta.env.VITE_URL;
 
 export default function DetailsPage() {
 	const [cardData, setCardData] = useState(null);
@@ -17,7 +15,7 @@ export default function DetailsPage() {
 	useEffect(() => {
 		setCardData(null);
 		async function fetchData() {
-			const jsonData = getMovieData(media, id);
+			const jsonData = await getMovieData(media, id);
 			setCardData(() => {
 				if (jsonData?.success === false) {
 					return undefined;
@@ -31,7 +29,7 @@ export default function DetailsPage() {
 	return (
 		<>
 			{cardData === null && <LoadingSpinner message='Loading data...' />}
-			{cardData === undefined && <NoMovieFound />}
+			{cardData === undefined && <NoPageFound />}
 			{cardData && <MovieDetails media={media} movie={cardData} />}
 		</>
 	);

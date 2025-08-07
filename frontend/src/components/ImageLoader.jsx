@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
-// import noImageAvailable from '../assets/noImage.webp';
-import noImageAvailable from '../assets/noPoster.png';
+import noPoster from '../assets/noPoster.png';
 import noBackdrop from '../assets/noBackdrop.png';
 import noActorImage from '../assets/noProfile.webp';
 
@@ -9,7 +8,7 @@ function loadImage(path, image, size = 'w342') {
 	if (!path) {
 		if (image === 'backdrop') return noBackdrop;
 		if (image === 'actor') return noActorImage;
-		return noImageAvailable;
+		return noPoster;
 	}
 	return `https://image.tmdb.org/t/p/${size}/${path}`;
 }
@@ -40,7 +39,7 @@ export default function ImageLoader({ path, image = 'movie', ...props }) {
 				<img
 					{...props}
 					loading='lazy'
-					src={loadImage(path, image, 'w1280')}
+					src={loadImage(path, image, 'original')}
 					onLoad={() => setImageState('high-quality')}
 					className={`image-high-quality ${
 						imageState === 'high-quality' ? 'loaded' : ''

@@ -6,15 +6,13 @@ import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import NoMovieFound from '../components/NoMovieFound.jsx';
 import MovieCard from '../components/MovieCard.jsx';
 
-const URL = import.meta.env.VITE_URL;
-
 export default function Home() {
 	const [trendingData, setTrendingData] = useState(null);
 
 	useEffect(() => {
 		async function fetchData() {
-			const jsonData = await getTrendingData();
-			setTrendingData(jsonData);
+			const result = await getTrendingData();
+			setTrendingData(result);
 		}
 		fetchData();
 	}, []);

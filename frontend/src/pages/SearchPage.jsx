@@ -7,8 +7,6 @@ import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import NoMovieFound from '../components/NoMovieFound.jsx';
 import MovieCard from '../components/MovieCard.jsx';
 
-const URL = import.meta.env.VITE_URL;
-
 export default function SearchPage() {
 	const [searchData, setSearchData] = useState(null);
 	const [searchQuery] = useSearchParams();
@@ -17,8 +15,8 @@ export default function SearchPage() {
 	useEffect(() => {
 		setSearchData(null);
 		async function fetchData() {
-			const jsonData = getSearchData(name);
-			setSearchData(jsonData);
+			const result = await getSearchData(name);
+			setSearchData(result);
 		}
 		fetchData();
 	}, [name]);
