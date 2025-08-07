@@ -93,10 +93,12 @@ function timeConverter(minutes) {
 function dollarToRupees(year, dollar) {
 	if (!dollar) return 'NA';
 	let quant = 'K',
-		rupees = 3.3,
-		usd = parseInt(dollar);
-	if (usdToInrRates[year]) rupees = usdToInrRates[year] * usd;
-	else rupees = rupees * usd;
+		usd = parseInt(dollar),
+		rupees;
+	if (parseInt(year) > 2025) rupees = usdToInrRates['2025'] * usd;
+	else if (parseInt(year) < 1947) rupees = usdToInrRates['1947'] * usd;
+	else rupees = usdToInrRates[year] * usd;
+
 	if (rupees >= 10000000) {
 		rupees = Math.round(rupees / 10000000);
 		quant = 'Cr';
