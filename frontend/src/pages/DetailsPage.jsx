@@ -1,12 +1,12 @@
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { useState, useEffect } from 'react';
 
 import { getMovieData } from '../services/userService.js';
 import LoadingSpinner from '../components/LoadingSpinner.jsx';
-import NoPageFound from '../pages/NoPageFound.jsx';
 import MovieDetails from '../components/MovieDetails.jsx';
 
 export default function DetailsPage() {
+	const navigate = useNavigate();
 	const [cardData, setCardData] = useState(null);
 	const { pathname } = useLocation();
 	const [_, media, id] = pathname.split('/');
@@ -18,9 +18,9 @@ export default function DetailsPage() {
 			const jsonData = await getMovieData(media, id);
 			setCardData(() => {
 				if (jsonData?.success === false) {
-					return undefined;
-				}
-				return jsonData;
+					navigate('/error');
+					return null;
+				} else return jsonData;
 			});
 		}
 		fetchData();
@@ -28,8 +28,7 @@ export default function DetailsPage() {
 
 	return (
 		<>
-			{cardData === null && <LoadingSpinner message='Loading data...' />}
-			{cardData === undefined && <NoPageFound />}
+			{cardData === null && <LoadingSpinner />}
 			{cardData && <MovieDetails media={media} movie={cardData} />}
 		</>
 	);

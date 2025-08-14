@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
 
-export default function NoPageFound() {
+export default function NoPageFound({ url = -2 }) {
 	const navigate = useNavigate();
 
 	return (
@@ -10,7 +10,7 @@ export default function NoPageFound() {
 				<h3>Oops! Page Not Found</h3>
 				<p>The page you're looking for doesn't exist or has been moved.</p>
 				<div className='not-found-buttons'>
-					<button className='home-button' onClick={() => navigate(-1)}>
+					<button className='home-button' onClick={() => navigate(url)}>
 						Go Back
 					</button>
 					<button className='home-button' onClick={() => navigate('/')}>
