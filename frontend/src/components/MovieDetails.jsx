@@ -112,8 +112,9 @@ export default function MovieDetails({ media, movie }) {
 										<div className='cast-image-container'>
 											<ImageLoader
 												path={actor.profile_path}
-												alt={actor.name}
 												image='actor'
+												size='w45'
+												alt={actor.name}
 											/>
 										</div>
 										<div className='cast-info'>
