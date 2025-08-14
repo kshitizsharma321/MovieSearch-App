@@ -12,20 +12,20 @@ async function getData(searchURL) {
 	}
 }
 
-export async function getTrendingData() {
-	const searchURL = `trending/all/day?api_key=${apiKey}`;
+export async function getTrendingData(page) {
+	const searchURL = `trending/all/day?api_key=${apiKey}&page=${page}`;
 	const jsonData = await getData(searchURL);
-	return jsonData.results;
+	return jsonData;
 }
 
-export async function getSearchData(name) {
-	const searchURL = `search/multi?api_key=${apiKey}&query=${name}`;
+export async function getSearchData(name, page) {
+	const searchURL = `search/multi?api_key=${apiKey}&query=${name}&page=${page}`;
 	const jsonData = await getData(searchURL);
-	return jsonData.results;
+	return jsonData;
 }
 
 export async function getMovieData(media, id) {
 	const searchURL = `${media}/${id}?api_key=${apiKey}&append_to_response=credits`;
-	const jsonData = getData(searchURL);
+	const jsonData = await getData(searchURL);
 	return jsonData;
 }
