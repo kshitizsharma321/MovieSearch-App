@@ -14,7 +14,7 @@ export default memo(function MovieCard({ individualData }) {
 		<>
 			<div className='movie-card' onClick={() => navigate(`/${media}/${id}`)}>
 				<div className='movie-poster'>
-					<ImageLoader path={poster} alt={title} size='w92' />
+					<ImageLoader path={poster} alt={title} size='w185' />
 					<div className='movie-rating'>
 						<span>{rating}</span>
 					</div>
