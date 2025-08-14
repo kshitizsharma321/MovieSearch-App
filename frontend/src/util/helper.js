@@ -77,7 +77,7 @@ const usdToInrRates = {
 	2022: 81.35,
 	2023: 81.94,
 	2024: 84.83,
-	2025: 86.13,
+	2025: 86.27,
 };
 
 function timeConverter(minutes) {
