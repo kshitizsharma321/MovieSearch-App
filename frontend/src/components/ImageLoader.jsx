@@ -4,7 +4,7 @@ import noPoster from '../assets/noPoster.png';
 import noBackdrop from '../assets/noBackdrop.png';
 import noActorImage from '../assets/noProfile.webp';
 
-function loadImage(path, image, size = 'w342') {
+function loadImage(path, image, size) {
 	if (!path) {
 		if (image === 'backdrop') return noBackdrop;
 		if (image === 'actor') return noActorImage;
@@ -13,7 +13,12 @@ function loadImage(path, image, size = 'w342') {
 	return `https://image.tmdb.org/t/p/${size}/${path}`;
 }
 
-export default function ImageLoader({ path, image = 'movie', ...props }) {
+export default function ImageLoader({
+	path,
+	image = 'movie',
+	size = 'w342',
+	...props
+}) {
 	const [imageState, setImageState] = useState('loading');
 
 	return (
@@ -26,7 +31,7 @@ export default function ImageLoader({ path, image = 'movie', ...props }) {
 
 			<img
 				{...props}
-				src={loadImage(path, image)}
+				src={loadImage(path, image, size)}
 				onLoad={() => setImageState('low-quality')}
 				className={`image-low-quality ${
 					imageState === 'low-quality' || imageState === 'high-quality'
