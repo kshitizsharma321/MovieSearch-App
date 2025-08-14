@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
 
 import Layout from './components/Layout.jsx';
 import NoPage from './pages/NoPageFound.jsx';
@@ -12,11 +12,16 @@ export default function App() {
 		<BrowserRouter>
 			<Routes>
 				<Route path='/' element={<Layout />}>
-					<Route index element={<Home />} />
-					<Route path='search' element={<Search />} />
+					{/* <Route index element={<Home />} /> */}
+					<Route index element={<Navigate to='/trending' replace />} />
+					<Route path='trending' element={<Home />} />
+					<Route path='trending/:page' element={<Home />} />
+					<Route path='search/:name' element={<Search />} />
+					<Route path='search/:name/:page' element={<Search />} />
 					<Route path='movie/:id' element={<Details />} />
 					<Route path='tv/:id' element={<Details />} />
-					<Route path='*' element={<NoPage />} />
+					<Route path='error' element={<NoPage />} />
+					<Route path='*' element={<NoPage url={-1} />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>
