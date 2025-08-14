@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router';
+import { memo } from 'react';
 
 import ImageLoader from './ImageLoader.jsx';
 import { getCommonData } from '../util/helper.js';
 import '../styles/MovieCard.css';
 
-export default function MovieCard({ individualData }) {
+export default memo(function MovieCard({ individualData }) {
 	const navigate = useNavigate();
 	const { id, title, media, releaseYear, rating, poster } =
 		getCommonData(individualData);
@@ -13,7 +14,7 @@ export default function MovieCard({ individualData }) {
 		<>
 			<div className='movie-card' onClick={() => navigate(`/${media}/${id}`)}>
 				<div className='movie-poster'>
-					<ImageLoader path={poster} alt={title} />
+					<ImageLoader path={poster} alt={title} size='w92' />
 					<div className='movie-rating'>
 						<span>{rating}</span>
 					</div>
@@ -25,4 +26,4 @@ export default function MovieCard({ individualData }) {
 			</div>
 		</>
 	);
-}
+});
