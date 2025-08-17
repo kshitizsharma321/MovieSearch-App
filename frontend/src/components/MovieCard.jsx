@@ -1,20 +1,20 @@
-import { useNavigate } from 'react-router';
 import { memo } from 'react';
 
-import ImageLoader from './ImageLoader.jsx';
 import { getCommonData } from '../util/helper.js';
+import { useQueryParams } from '../services/useQueryParams.jsx';
+import ImageLoader from './ImageLoader.jsx';
 import '../styles/MovieCard.css';
 
 export default memo(function MovieCard({ individualData }) {
-	const navigate = useNavigate();
-	const { id, title, media, releaseYear, rating, poster } =
+	const { navigate, media } = useQueryParams();
+	const { id, title, releaseYear, rating, poster } =
 		getCommonData(individualData);
 
 	return (
 		<>
 			<div className='movie-card' onClick={() => navigate(`/${media}/${id}`)}>
 				<div className='movie-poster'>
-					<ImageLoader path={poster} alt={title} size='w185' />
+					<ImageLoader path={poster} alt={title} size='w154' />
 					<div className='movie-rating'>
 						<span>{rating}</span>
 					</div>

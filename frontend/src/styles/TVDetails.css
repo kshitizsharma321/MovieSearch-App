@@ -1,0 +1,163 @@
+/* TV-specific styles only */
+@import './CommonDetails.css';
+
+.tv-metadata {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 1rem;
+	margin-top: 1rem;
+}
+
+.tv-info-card {
+	background: rgba(255, 255, 255, 0.05);
+	padding: 1rem;
+	border-radius: 8px;
+	border: 1px solid var(--border-color);
+}
+
+.tv-info-label {
+	font-size: 0.8rem;
+	color: var(--text-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	margin-bottom: 0.5rem;
+}
+
+.tv-info-value {
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--text-primary);
+}
+
+.tv-status {
+	display: inline-block;
+	padding: 0.3rem 0.8rem;
+	border-radius: 15px;
+	font-size: 0.8rem;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.status-ended {
+	background: #dc2626;
+	color: white;
+}
+
+.status-ongoing {
+	background: #16a34a;
+	color: white;
+}
+
+.status-cancelled {
+	background: #6b7280;
+	color: white;
+}
+
+/* Seasons Grid */
+.seasons-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 1.5rem;
+}
+
+.season-card {
+	background: var(--secondary-bg);
+	border-radius: 12px;
+	overflow: hidden;
+	border: 1px solid var(--border-color);
+	transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.season-card:hover {
+	transform: translateY(-4px);
+	border-color: var(--primary-red);
+}
+
+.season-poster {
+	width: 100%;
+	aspect-ratio: 2/3;
+	object-fit: cover;
+	background: var(--border-color);
+}
+
+.season-info {
+	padding: 1rem;
+}
+
+.season-name {
+	font-size: 1rem;
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+	color: var(--text-primary);
+}
+
+.season-details {
+	font-size: 0.85rem;
+	color: var(--text-secondary);
+	margin-bottom: 0.3rem;
+}
+
+.season-rating {
+	display: inline-block;
+	background: #efbf04;
+	color: #000;
+	padding: 0.2rem 0.6rem;
+	border-radius: 12px;
+	font-size: 0.8rem;
+	font-weight: 600;
+}
+
+/* Creators */
+.creators-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+}
+
+.creator-card {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	background: rgba(255, 255, 255, 0.05);
+	padding: 1rem;
+	border-radius: 8px;
+	border: 1px solid var(--border-color);
+	min-width: 200px;
+}
+
+.creator-image {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 2px solid var(--border-color);
+}
+
+.creator-info h4 {
+	font-size: 0.9rem;
+	font-weight: 600;
+	margin-bottom: 0.2rem;
+	color: var(--text-primary);
+}
+
+.creator-role {
+	font-size: 0.8rem;
+	color: var(--text-muted);
+}
+
+/* Networks */
+.networks-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	align-items: center;
+}
+
+.network-logo {
+	height: 40px;
+	object-fit: contain;
+	background: white;
+	padding: 8px;
+	border-radius: 6px;
+	border: 1px solid var(--border-color);
+}

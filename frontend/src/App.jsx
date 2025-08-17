@@ -12,12 +12,9 @@ export default function App() {
 		<BrowserRouter>
 			<Routes>
 				<Route path='/' element={<Layout />}>
-					{/* <Route index element={<Home />} /> */}
 					<Route index element={<Navigate to='/trending' replace />} />
 					<Route path='trending' element={<Home />} />
-					<Route path='trending/:page' element={<Home />} />
-					<Route path='search/:name' element={<Search />} />
-					<Route path='search/:name/:page' element={<Search />} />
+					<Route path='search' element={<Search />} />
 					<Route path='movie/:id' element={<Details />} />
 					<Route path='tv/:id' element={<Details />} />
 					<Route path='error' element={<NoPage />} />

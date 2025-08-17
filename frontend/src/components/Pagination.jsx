@@ -6,17 +6,14 @@ export default function Pagination({ page, pages, path = '' }) {
 	return (
 		<div className='not-found-buttons'>
 			{page > 1 && (
-				<button
-					className='home-button'
-					onClick={() => navigate(`${path}/${page - 1}`)}
-				>
+				<button className='home-button' onClick={() => navigate(-1)}>
 					Prev
 				</button>
 			)}
 			{pages && page < pages && (
 				<button
 					className='home-button'
-					onClick={() => navigate(`${path}/${page + 1}`)}
+					onClick={() => navigate(`${path}&page=${page + 1}`)}
 				>
 					Next
 				</button>

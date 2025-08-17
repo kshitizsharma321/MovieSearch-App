@@ -51,22 +51,24 @@
 	display: flex;
 	align-items: center;
 	background: #fff;
-	border-radius: 50px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	/* border-radius: 50px; */
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 	border: 1px solid #e5e7eb;
 
 	&:focus-within {
-		border-color: #e50914;
+		/* border-color: #e50914; */
 		box-shadow: 0 4px 12px rgba(229, 9, 20, 0.15);
 	}
 }
 
-.search-icon-left {
+/* .search-icon-left {
 	width: 20px;
 	height: 20px;
 	margin-left: 16px;
 	color: #9ca3af;
-}
+} */
 
 .search-input {
 	flex: 1;
@@ -78,6 +80,7 @@
 	background: transparent;
 
 	&::placeholder {
+		letter-spacing: 0.5px;
 		color: #9ca3af;
 	}
 
@@ -92,7 +95,7 @@
 	border: none;
 	padding: 10px 16px;
 	cursor: pointer;
-	border-radius: 50%;
+	/* border-radius: 50%; */
 
 	&:hover {
 		background: rgba(229, 9, 20, 0.1);
@@ -116,4 +119,137 @@
 		width: 18px;
 		height: 18px;
 	}
+}
+
+.toggle-border {
+	margin-top: 10px;
+	max-width: 120px;
+	border: 2px solid #f0ebeb;
+	border-radius: 130px;
+	margin-bottom: 45px;
+	padding: 1px 2px;
+	background: linear-gradient(to bottom right, white, rgba(220, 220, 220, 0.5)),
+		white;
+	box-shadow: 0 0 0 2px #fbfbfb;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+}
+
+.toggle-border:last-child {
+	margin-bottom: 0;
+}
+
+.toggle-border input[type='checkbox'] {
+	display: none;
+}
+
+.toggle-border label {
+	position: relative;
+	display: inline-block;
+	min-width: 115px;
+	background: #d13613;
+	border-radius: 80px;
+	cursor: pointer;
+	box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.3);
+	transition: background 0.5s;
+}
+
+.toggle-border input[type='checkbox']:checked + label {
+	background: #13d162;
+}
+.toggle-border input[type='checkbox']:not(:checked) + label::after {
+	content: 'MOVIES';
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	padding: 0px 6px;
+	font-size: 15px;
+	color: white;
+	font-weight: 700;
+}
+.toggle-border input[type='checkbox']:checked + label::after {
+	content: 'TV SHOWS';
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	padding: 0px 6px;
+	font-size: 15px;
+	color: white;
+	font-weight: 700;
+}
+
+.handle {
+	position: absolute;
+	top: -8px;
+	left: -10px;
+	width: 35px;
+	height: 35px;
+	border: 1px solid #e5e5e5;
+	background: repeating-radial-gradient(
+			circle at 50% 50%,
+			rgba(200, 200, 200, 0.2) 0%,
+			rgba(200, 200, 200, 0.2) 2%,
+			transparent 2%,
+			transparent 3%,
+			rgba(200, 200, 200, 0.2) 3%,
+			transparent 3%
+		),
+		conic-gradient(
+			white 0%,
+			silver 10%,
+			white 35%,
+			silver 45%,
+			white 60%,
+			silver 70%,
+			white 80%,
+			silver 95%,
+			white 100%
+		);
+	border-radius: 50%;
+	box-shadow: 3px 5px 10px 0 rgba(0, 0, 0, 0.4);
+	transition: left 0.4s cubic-bezier(1, 1, 0.1, 1.1);
+}
+
+.toggle-border input[type='checkbox']:checked + label > .handle {
+	left: calc(100% - 35px + 10px);
+}
+
+.media-type {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 2rem;
+}
+
+.autocomplete-container {
+	position: relative;
+}
+
+.autocomplete-suggestions {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	color: #1f2937;
+	background: transparent;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-top: none;
+	border-radius: 0 0 5px 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	z-index: 1000;
+}
+
+.autocomplete-suggestion {
+	padding: 10px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.autocomplete-suggestion:hover {
+	background-color: #f0f0f0;
 }
