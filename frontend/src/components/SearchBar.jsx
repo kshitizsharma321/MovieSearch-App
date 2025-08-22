@@ -21,8 +21,8 @@ export default memo(function SearchBar() {
 		setUserInput(value);
 	}
 
-	function handleClick() {
-		const trimmedInput = userInput.trim();
+	function handleClick(searchData = userInput) {
+		const trimmedInput = searchData.trim();
 		setUserInput('');
 		inputRef.current.blur();
 		if (!trimmedInput) {
@@ -34,7 +34,8 @@ export default memo(function SearchBar() {
 	function handleSelect(suggestion) {
 		clearSuggestions();
 		setUserInput(suggestion);
-		inputRef.current.focus();
+		handleClick(suggestion);
+		// inputRef.current.focus();
 	}
 
 	return (

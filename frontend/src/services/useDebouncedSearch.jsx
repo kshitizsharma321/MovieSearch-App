@@ -1,21 +1,22 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { getSearchData } from './userService.js';
 
 export function useDebouncedSearch(userInput, media) {
 	const [debouncedQuery, setDebouncedQuery] = useState('');
 	const [filteredSuggestions, setFilteredSuggestions] = useState([]);
-	let justSelected = useRef(false);
+	// let justSelected = useRef(false);
 
-	function clearSuggestions() {
-		justSelected.current = true;
+	const clearSuggestions = useCallback(() => {
+		// justSelected.current = true;
 		setFilteredSuggestions([]);
-	}
+	}, []);
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
-			if (!justSelected.current) setDebouncedQuery(userInput);
-			else justSelected.current = false;
+			setDebouncedQuery(userInput);
+			// if (!justSelected.current) setDebouncedQuery(userInput);
+			// else justSelected.current = false;
 		}, 300);
 
 		return () => {
