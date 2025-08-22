@@ -16,7 +16,7 @@ function loadImage(path, image, size) {
 export default function ImageLoader({
 	path,
 	image = 'movie',
-	size = 'w342',
+	size = 'w300',
 	...props
 }) {
 	const [imageState, setImageState] = useState('loading');
